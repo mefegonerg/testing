@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg1: #000000;
+    --bg2: #101010;
+    --color: #ededed;
+    --search-bg: #1a1a1a;
+    --input-bg: rgba(62, 62, 62, 0.13);
+    --placeholder: #8f8f8f;
+    --background-image: linear-gradient(to bottom, var(--bg1) 60%, var(--bg2) 100%);
+    --font: "Poppins", sans-serif;
+}
+
+body {
+    background-image: var(--background-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--color);
+    font-family: var(--font);
+    min-height: 100vh;
+    margin: 0;
+    transition: background-image 0.5s ease;
+    /* Smooth transition for gradient change */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 75px;
+    margin: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    /* Align children vertically */
+    justify-content: center;
+    /* Center children vertically in the container */
+    align-items: center;
+    /* Center children horizontally in the container */
+    height: 90vh;
+    /* Make the search container take the full height of the viewport */
+    margin: 0 auto;
+    /* Center the container on the page horizontally */
+}
+
+.search {
+    width: 330px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--search-bg);
+    color: var(--color);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.input {
+    width: 250px;
+    height: 40px;
+    background: var(--input-bg);
+    border-radius: 16px;
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    /* From https://css.glass */
+    border-radius: 16px;
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: none;
+    color: var(--color);
+    text-align: center;
+
+}
+
+.input::placeholder {
+    color: var(--placeholder);
+    text-align: center;
+}
+
+.search::placeholder {
+    color: var(--placeholder);
+}
+
+.search:focus {
+    width: 400px;
+}
+
+.proxy-container {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    background-color: var(--bg1);
+    transform-origin: 50% 50%;
+}
+
+.proxy-open-animation {
+    animation: proxy-open 1s ease-in-out;
+    animation-fill-mode: forwards;
+    border: 2px solid var(--bg2);
+}
+
+@keyframes proxy-open {
+    from {
+        width: 1px;
+        height: 1px;
+        border-radius: 0px;
+    }
+
+    to {
+        width: 90%;
+        height: 90vh;
+        border-radius: 10px;
+    }
+}
+
+.proxy-close-animation {
+    animation: proxy-close 1s ease-in-out;
+    animation-fill-mode: forwards;
+    border: none;
+}
+
+@keyframes proxy-close {
+    from {
+        width: 90%;
+        height: 90vh;
+        border-radius: 10px;
+    }
+
+    to {
+        width: 1px;
+        height: 1px;
+        border-radius: 0px;
+    }
+}
+
+.proxy-fullclose-animation {
+    animation: proxy-full-close 1s ease-in-out;
+    animation-fill-mode: forwards;
+    border: none;
+}
+
+@keyframes proxy-full-close {
+    from {
+        width: 100%;
+        height: 100vh;
+    }
+
+    to {
+        width: 1px;
+        height: 1px;
+        border-radius: 0px;
+    }
+}
+
+.proxy-full-animation {
+    animation: proxy-full 1s ease-in-out;
+    animation-fill-mode: forwards;
+    border: none;
+}
+
+@keyframes proxy-full {
+    from {
+        width: 90%;
+        height: 90vh;
+        border-radius: 10px;
+    }
+
+    to {
+        width: 100%;
+        height: 100vh;
+    }
+}
+
+.proxy-normal-animation {
+    animation: proxy-normal 1s ease-in-out;
+    animation-fill-mode: forwards;
+    border: 2px solid var(--bg2);
+}
+
+@keyframes proxy-normal {
+    from {
+        width: 100%;
+        height: 100vh;
+    }
+
+    to {
+        width: 90%;
+        height: 90vh;
+        border-radius: 10px;
+    }
+}
+
+.proxy-outer-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+
+.iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.close-icon {
+    position: absolute;
+    width: 2vh;
+    height: 2vh;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+.fullscreen-icon {
+    position: absolute;
+    right: 0px;
+    text-align: right;
+    width: 2vh;
+    height: 2vh;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-right: 6px;
+}
+
+.settingsButton {
+    font-size: 20px;
+    margin: 4px;
+    margin-left: 6px;
+    color: var(--color);
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.settings-outer-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.settings-container {
+    position: absolute;
+    background-color: var(--bg1);
+    transform-origin: 50% 50%;
+}
+
+.settings {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.button {
+    border-radius: 10px;
+    border: none;
+    background-color: var(--bg1);
+    color: white;
+    font-size: large;
+    cursor: pointer;
+}
+
+.transportsel {
+    border-radius: 10px;
+    border: none;
+    background-color: var(--bg1);
+    color: white;
+    font-size: large;
+    text-align: center;
+    cursor: pointer;
+}
